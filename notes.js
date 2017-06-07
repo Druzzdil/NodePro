@@ -12,7 +12,7 @@ const addNote = (title, body) => {
         let noteString = fs.readFileSync('notes-data.json');
         notes = JSON.parse(noteString);
     } catch (e){
-
+3
     }
 
     let duplicateNotes = notes.filter((note) => note.title === title );
