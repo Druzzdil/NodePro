@@ -1,13 +1,24 @@
-/**
- * Created by igor on 6/6/2017.
- */
 console.log('starting notes.js');
 
-module.exports.addNote =  () => {
-    console.log('new note');
-    return 'new noteee'
-}
-module.exports.add = (a,b) => {
-    return a+b;
-}
+const addNote = (title, body) => {
+    console.log(" adding note:", title,body);
+};
 
+const getAll = () => {
+    console.log("getting all notes");
+};
+
+const readNoteTitle = (title) => {
+    console.log("this is node title", title);
+};
+
+const removeNote = () => {
+    console.log("removing all notes");
+};
+
+module.exports = {
+    addNote,
+    getAll,
+    readNoteTitle,
+    removeNote
+};

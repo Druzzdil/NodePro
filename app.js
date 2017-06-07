@@ -4,17 +4,35 @@
 console.log('starting app.js');
 
 const fs = require('fs');
-const os = require('os');
 const notes = require('./notes.js');
+const yargs = require('yargs');
+const argv = yargs.argv;
+
+console.log('yargs:', argv);
+
 const _ = require('lodash');
 
-let res = notes.addNote();
-let add = notes.add(3,6);
-console.log('result:', notes.add(3,5));
-let user = os.userInfo();
-let filteredArray = _.uniq(['igor', 1, 'igor', 1,2,3,4]);
-console.log(filteredArray);
+const command = argv._[0];
+console.log('Command:', command);
+console.log(process.argv);
 
-fs.appendFile('greetings.txt', `hello ${user.username}!` + add , err => {
-    if (err) throw error;
-});
+if(command === 'add') {
+    console.log('adding new note');
+    notes.addNote(argv.title, argv.body);
+} else if ( command === 'list') {
+    console.log('listing all notes');
+    notes.getAll();
+} else if ( command === 'read') {
+    console.log('fetching notes');
+    notes.readNoteTitle(argv.title);
+}  else if ( command === 'remove') {
+    console.log('removing all notes');
+    notes.removeNote();
+} else {
+    console.log('not regonized command');
+}
+
+
+
+
+
