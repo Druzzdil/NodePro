@@ -14,7 +14,7 @@ const _ = require('lodash');
 
 const command = argv._[0];
 console.log('Command:', command);
-console.log(process.argv);
+
 
 if(command === 'add') {
     console.log('adding new note');
