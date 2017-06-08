@@ -3,7 +3,6 @@
  */
 console.log('starting app.js');
 
-const fs = require('fs');
 const notes = require('./notes.js');
 const yargs = require('yargs');
 const argv = yargs.argv;
@@ -11,6 +10,7 @@ const argv = yargs.argv;
 console.log('yargs:', argv);
 
 const _ = require('lodash');
+console.log(process, 'this is argv list');
 
 const command = argv._[0];
 console.log('Command:', command);
@@ -18,7 +18,8 @@ console.log('Command:', command);
 
 if(command === 'add') {
     console.log('adding new note');
-    notes.addNote(argv.title, argv.body);
+   let note =  notes.addNote(argv.title, argv.body);
+
 } else if ( command === 'list') {
     console.log('listing all notes');
     notes.getAll();
@@ -31,8 +32,3 @@ if(command === 'add') {
 } else {
     console.log('not regonized command');
 }
-
-
-
-
-
