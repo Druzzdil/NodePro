@@ -7,28 +7,26 @@ const notes = require('./notes.js');
 const yargs = require('yargs');
 const argv = yargs.argv;
 
-console.log('yargs:', argv);
 
 const _ = require('lodash');
 
 const command = argv._[0];
-console.log('Command:', command);
-
 
 if(command === 'add') {
     console.log('adding new note');
    let note =  notes.addNote(argv.title, argv.body);
 
 } else if ( command === 'list') {
-    console.log('listing all notes');
-    notes.getAll();
+    let everyNote = notes.getAll();
+    console.log(`printing all ${everyNote.length} note(s).`);
+    everyNote.forEach((note) => notes.logNote(note));
 } else if ( command === 'read') {
     console.log('fetching notes');
     let note = notes.readNoteTitle(argv.title);
     if(note){
         console.log('this is the title u provide', note.title);
     } else {
-        console.log('not found note')
+        console.log('not found note');
     }
 }  else if ( command === 'remove') {
     console.log('removing all notes');
