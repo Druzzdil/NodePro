@@ -44,8 +44,12 @@ const readNoteTitle = (title) => {
     console.log("this is node title", title);
 };
 
-const removeNote = () => {
-    console.log("removing all notes");
+const removeNote = (title) => {
+    let notes = fetchNotes();
+    let filterNotes = notes.filter((note) => note.title !== title);
+    console.log(filterNotes, 'istniejace notatki');
+    saveNotes(filterNotes);
+    return notes.length !== filterNotes.length;
 };
 
 module.exports = {

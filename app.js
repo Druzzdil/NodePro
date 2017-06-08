@@ -10,7 +10,6 @@ const argv = yargs.argv;
 console.log('yargs:', argv);
 
 const _ = require('lodash');
-console.log(process, 'this is argv list');
 
 const command = argv._[0];
 console.log('Command:', command);
@@ -28,7 +27,9 @@ if(command === 'add') {
     notes.readNoteTitle(argv.title);
 }  else if ( command === 'remove') {
     console.log('removing all notes');
-    notes.removeNote();
+    let noteRemoved = notes.removeNote(argv.title);
+    let message = noteRemoved ? "not was remove" : "note not found"
+    console.log(message);
 } else {
     console.log('not regonized command');
 }
